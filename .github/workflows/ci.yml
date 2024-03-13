@@ -53,3 +53,8 @@ jobs:
 
             - name: Run User Test
               run: npm run test:file user_route    
+
+    deploy:
+        needs: [routage]
+        if: ${{ github.event_name == 'push' && github.ref_name == 'main'}}
+        uses: ./.github/workflows/deploy.yml
